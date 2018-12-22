@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>进阶JSX语法</title>
+</head>
+<body>
+  <div id="reactContainer"></div>
+  <script src="./common/react.development.js"></script>
+  <script src="./common/react-dom.development.js"></script>
+  <script type="text/babel">
+    let names = ['JSPang','技术胖','React'];
+    class HelloComponent extends React.Component{
+      render() {
+        return <div>
+          {
+            names.map(function(name) {
+              return <div key={name}>hello,{name}!</div>
+            })
+          }  
+        </div>
+      }
+    }
+    ReactDOM.render(<helloComponent />, document.getElementById('reactContainer'));
+  </script>
+</body>
+</html>
