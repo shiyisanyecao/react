@@ -4,24 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
   <title>Document</title>
 </head>
 <body>
   <div id="reactContainer"></div>
-  <script src="./common/react.development.js"></script>
-  <script src="./common/react-dom.development.js"></script>
-  <script>
-    // const element = <h1>hello, jspang!</h1>;
-    class Welcome extends React.Component{
-      render() {
+  <script type="text/babel">
+    class Hello extends React.Component {
+      render () {
         return (
-          <h1>hello, jspang</h1>
+          <div>hello world!</div>
         )
       }
     }
+    // const element = <div>hello world!</div>
     ReactDOM.render(
-      <Welcome />,
-      document.getElementById('reactContainer')
+        <Hello />,
+        document.getElementById('reactContainer')
     )
   </script>
 </body>

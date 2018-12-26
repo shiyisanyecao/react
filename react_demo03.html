@@ -8,8 +8,10 @@
 </head>
 <body>
   <div id="reactContainer"></div>
-  <script src="./common/react.development.js"></script>
-  <script src="./common/react-dom.development.js"></script>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/6.0.19/browser.js"></script>
   <script type="text/babel">
     let names = ['JSPang','技术胖','React'];
     class HelloComponent extends React.Component{
@@ -23,7 +25,7 @@
         </div>
       }
     }
-    ReactDOM.render(<helloComponent />, document.getElementById('reactContainer'));
+    ReactDOM.render(<HelloComponent />, document.getElementById('reactContainer'));
   </script>
 </body>
 </html>
