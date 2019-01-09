@@ -13,19 +13,20 @@
 <body>
   <div id="demo"></div>
   <script type="text/babel">
-    class MyTitle extends React.component{
-      // PropTypes: {
-      //   title: React.PropTypes.string.isRequired,
-      // }
-      // getDefaultProps() {
-      //   return {title:'hello jspang'}
-      // }
+    class MyComponent extends React.Component{
+      handlerClick() {
+        this.refs.myTextInput.focus();
+      }
       render() {
-        return (<h2>{this.props.title}</h2>)
+        return (
+          <div>
+            <input type="text" ref="myTextInput"/>
+            <input type="button" value="Focus the text input" onClick={this.handlerClick.bind(this)}/>
+          </div>
+        )
       }
     }
-    var data = 123;
-    ReactDOM.render(<MyTitle title={data}/>, document.getElementById('demo'));
+    ReactDOM.render(<MyComponent />,document.getElementById('demo'))
   </script>
 </body>
 </html>
