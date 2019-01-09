@@ -14,30 +14,36 @@
   <script src="https://cdn.bootcss.com/babel-core/6.0.19/browser.js"></script>
   <script type="text/babel">
     class AddCount extends React.Component{
-      getInitialState() {
-        console.log('1.getnitialState');
-        return {count:1};
-      },
+      // getInitialState() {
+      //   console.log('1.getnitialState');
+      //   return {count:1};
+      // }
+
+      state = {
+        count: 1
+      }
+
       componentWillMount() {
         console.log('2.componentWillMount')
-      },
+      }
       componentDidMount() {
         console.log('3.componentDidMount')
-      },
+      }
       componentWillUpdate() {
         console.log('4.componentWillUpdate')
-      },
-      componentDidUpdate() {
-        console.log('5.componentDidUpdate')
-      },
-      handleClick() {
+      }
+      // componentDidUpdate() {
+      //   console.log('5.componentDidUpdate')
+      // }
+      handleClick(event) {
+        console.log(this,'ppppppp');
         this.setState({count:this.state.count+1});
-      },
+      }
       render() {
         return (
           <p>
             {this.state.count}<br/>
-            <button onClick={this.handleClick}>ADD</button>
+            <button onClick={(e) => {this.handleClick(e)}}>ADD</button>
           </p>
         )
       }

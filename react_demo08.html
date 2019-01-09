@@ -4,43 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>state</title>
-</head>
-<body>
-  <div id="reactContainer"></div>
+  <title>生命周期案例</title>
   <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
   <script src="https://cdn.bootcss.com/babel-core/6.0.19/browser.js"></script>
+</head>
+<body>
+  <div id="demo"></div>
   <script type="text/babel">
-    class TextBoxComponent extends React.Component{
-      // getDefaultProps() {
-
-      // }
-      
-      // getInitialState() {
-      //   return {enable:false};
-      // }
-
+    class Hello extends React.Component{
       state = {
-        enable: false
+        opacity: 1.0
       }
 
-      handleClick (event) {
-        console.log(this, event)
-        this.setState({enable:!this.state.enable})
+      componentDidMount() {
+        setInterval(function() {
+          var opacity = this.state.opacity;
+          opacity -= .05;
+          if(opacity < 0.1) {
+            opacity = 1.0;
+          }
+          this.setState({
+            opacity: opacity
+          })
+        }.bind(this),100)
       }
-
       render() {
         return (
-          <p>
-            <input type="text" disabled={this.state.enable}/> 
-            <button onClick={(e) => {this.handleClick(e)}}>改变textBox状态</button> 
-          </p>
+          <div style={{opacity: this.state.opacity}}>
+            <h2>Hello {this.props.name}</h2>  
+          </div>
         )
       }
-    } 
-    ReactDOM.render(<TextBoxComponent />,document.getElementById('reactContainer'));
+    };
+    ReactDOM.render(<Hello name="world" />,document.getElementById('demo'))
   </script>
 </body>
 </html>
