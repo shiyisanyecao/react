@@ -4,28 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>PropTypes</title>
   <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
-  <script src="https://cdn.bootcss.com/babel-core/6.0.19/browser.js"></script>
+  <title>Document</title>
 </head>
 <body>
-  <div id="demo"></div>
+  <div id="reactContainer"></div>
   <script type="text/babel">
-    class MyTitle extends React.component{
-      static propTypes = {
-        title: React.PropTypes.string.isRequired,
+    class Hello extends React.Component {
+      state = {
+        value: 'jspang'
       }
-      static defaultProps = {
-        title: 'hello jspang!'
+      handlerChange(event) {
+        this.setState({value:event.target.value});
+        console.log(this.state.value);
       }
       render() {
-        return (<h2>{this.props.title}</h2>)
+        return (
+          <div>
+            <input type="text" value={this.state.value} onChange={this.handlerChange.bind(this)}/>  
+          </div>
+        )
       }
     }
-    var data = 123;
-    ReactDOM.render(<MyTitle title={data}/>, document.getElementById('demo'));
+    // const element = <div>hello world!</div>
+    ReactDOM.render(
+        <Hello />,
+        document.getElementById('reactContainer')
+    )
   </script>
 </body>
 </html>

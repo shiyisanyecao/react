@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="reactContainer"></div>
+  <script type="text/babel">
+    class Hello extends React.Component {
+      state = {
+        username: '',
+        gender: 'man',
+        checked: true
+      }
+      handlerChange(event) {
+        var newState = {};
+        // newState[name]=name=="checked"?event.target.checked:event.target.value;
+        newState[event.target.name]=event.target.name=="checked"?event.target.checked:event.target.value;
+        this.setState(newState);
+        console.log(newState);
+      }
+      submitHandler(e) {
+        console.log(this)
+        e.preventDefault();
+        var is = this.state.checked?'是':'不是';
+        var gender = this.state.gender == 'man'?'帅哥':'美女';
+        alert(this.state.username+is+gender+'.')
+      }
+      render() {
+        return (
+          <form onSubmit={this.submitHandler}>
+            <label htmlFor="username">请输入您的姓名：</label>
+            <input type="text" name="username" id="username" onChange={this.handlerChange} value={this.state.username}/>
+            <br/>
+            <label htmlFor="checkbox">是或者否：</label>
+            <input type="checkbox" name="checked" id="checkbox" onChange={this.handlerChange} checked={this.state.checked}/>
+            <br/>
+            <label htmlFor="gender">请选择：</label>
+            <select name="gender"  onChange={this.handlerChange} value={this.state.gender}>
+              <option value="man">帅哥</option>  
+              <option value="woman">美女</option>  
+            </select>
+            <br/>
+            <button type="button">提交</button>
+            <br/>
+          </form>
+        )
+      }
+    }
+    // const element = <div>hello world!</div>
+    ReactDOM.render(
+        <Hello />,
+        document.getElementById('reactContainer')
+    )
+  </script>
+</body>
+</html>
